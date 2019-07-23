@@ -8,7 +8,13 @@ def prompt(message)
 end
 
 def valid_number?(num)
-  num.to_i() != 0
+  if num == '0'
+    return true
+  elsif num.to_i() != 0
+    return true
+  else
+    return false
+  end
 end
 
 def operation_to_message(op)
@@ -45,7 +51,7 @@ loop do # main loop
     prompt("What's the first number?")
     number1 = Kernel.gets().chomp()
 
-    if valid_number?(number1)
+    if number?(number1)
       break
     else
       prompt("That doesn't look like a valid number")
@@ -57,7 +63,7 @@ loop do # main loop
     prompt("What's the second number?")
     number2 = Kernel.gets().chomp()
 
-    if valid_number?(number2)
+    if number?(number2)
       break
     else
       prompt("That doesn't look like a valid number")
@@ -89,11 +95,11 @@ loop do # main loop
 
   result = case operator
            when '1'
-             number1.to_i() + number2.to_i()
+             number1.to_f() + number2.to_f()
            when '2'
-             number1.to_i() - number2.to_i()
+             number1.to_f() - number2.to_f()
            when '3'
-             number1.to_i() * number2.to_i()
+             number1.to_f() * number2.to_f()
            when '4'
              number1.to_f() / number2.to_f()
            end
